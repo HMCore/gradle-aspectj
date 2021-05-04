@@ -86,3 +86,8 @@ wrapper {
     gradleVersion = '6.0'
     distributionType = 'ALL'
 }
+
+// keep Java 11 downward compatibility of the generated artifact
+java {
+    targetCompatibility = JavaVersion.VERSION_11
+}
