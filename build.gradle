@@ -3,7 +3,7 @@ apply plugin: 'maven'
 apply plugin: 'java-gradle-plugin'
 
 group = 'com.github.hmcore'
-version = '2.6-SNAPSHOT'
+version = '2.6.1-SNAPSHOT'
 
 repositories {
     jcenter()
