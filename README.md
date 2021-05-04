@@ -1,3 +1,6 @@
+We forked this to adjust it to work again because the fork of an abandoned project is now also abandoned :/
+-----------------------------------------------------------------------------------------------------------
+
 Gradle AspectJ plugin
 =====================
 
@@ -85,7 +88,7 @@ compileAspect {
 Development
 -----------
 
-This project was forked from an abandoned project.  The project is now maintained by James Bryant.
+This project was forked from an abandoned project.  The project is now maintained by us.
 
 License
 -------
