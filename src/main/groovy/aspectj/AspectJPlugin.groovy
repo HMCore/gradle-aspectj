@@ -9,6 +9,10 @@ import org.gradle.api.logging.LogLevel
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.api.tasks.SourceSet
 import org.gradle.api.tasks.TaskAction
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFiles
+import org.gradle.api.tasks.Internal
+import org.gradle.api.tasks.Optional
 
 /**
  *
@@ -114,17 +118,29 @@ class AspectJPlugin implements Plugin<Project> {
 }
 
 class Ajc extends DefaultTask {
-
+    @Internal
     SourceSet sourceSet
 
+    @InputFiles
     FileCollection aspectpath
+    @InputFiles
     FileCollection ajInpath
 
     // ignore or warning
+    @Input
+    @Optional
     String xlint = 'ignore'
 
+    @Input
+    @Optional
     String maxmem
+
+
+    @Input
+    @Optional
     Map<String, String> additionalAjcArgs
+    @Input
+    @Optional
 	List<String> additionalCompilerArgs
 
     Ajc() {
@@ -181,6 +197,7 @@ class Ajc extends DefaultTask {
 
 class AspectJExtension {
 
+    @Input
     String version
 
     AspectJExtension(Project project) {
