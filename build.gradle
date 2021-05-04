@@ -1,10 +1,8 @@
 apply plugin: 'groovy'
-apply plugin: 'maven-publish'
 apply plugin: 'maven'
-apply plugin: 'signing'
 apply plugin: 'java-gradle-plugin'
 
-group = 'net.uberfoo.gradle'
+group = 'com.github.hmcore'
 version = '2.6-SNAPSHOT'
 
 repositories {
@@ -28,58 +26,10 @@ task javadocJar(type: Jar) {
     from javadoc
 }
 
-signing {
-    sign configurations.archives
-}
-
 artifacts {
     //archives jar
     archives sourcesJar
     archives javadocJar
-}
-
-uploadArchives {
-  repositories {
-    mavenDeployer {
-      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-        authentication(userName: ossrhUsername, password: ossrhPassword)
-      }
-
-      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-        authentication(userName: ossrhUsername, password: ossrhPassword)
-      }
-
-      pom.project {
-        name 'Gradle AspectJ Plugin'
-        packaging 'jar'
-        description 'A Gradle plugin for compiling AspectJ aspects.'
-        url 'https://github.com/james-bryant/gradle-aspectj'
-
-        scm {
-          connection 'scm:git:https://github.com/james-bryant/gradle-aspectj.git'
-          developerConnection 'scm:git:https://github.com/james-bryant/gradle-aspectj.git'
-          url 'https://github.com/james-bryant/gradle-aspectj.git'
-        }
-
-        licenses {
-          license {
-            name 'The Apache License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-          }
-        }
-
-        developers {
-          developer {
-            id 'uberfoo'
-            name 'James Bryant'
-            email 'james@uberfoo.net'
-          }
-        }
-      }
-    }
-  }
 }
 
 wrapper {
